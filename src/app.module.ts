@@ -6,16 +6,15 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AuthorModule } from './author/author.module';
 import { BookModule } from './book/book.module';
 import { UserModule } from './user/user.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ ignoreEnvFile: true }),
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
     }),
-    MongooseModule.forRoot(
-      `mongodb+srv://DmitriiS:DmitriiS123@cluster0.lbs64.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
-      { useCreateIndex: true },
-    ),
+    MongooseModule.forRoot(process.env.MDB_URL, { useCreateIndex: true }),
     AuthorModule,
     BookModule,
     UserModule,
