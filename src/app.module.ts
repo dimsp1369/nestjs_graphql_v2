@@ -13,7 +13,7 @@ import { UserModule } from './user/user.module';
       autoSchemaFile: 'schema.gql',
     }),
     MongooseModule.forRoot(
-      `mongodb+srv://DmitriiS:DmitriiS123@cluster0.lbs64.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+      
       { useCreateIndex: true },
     ),
     AuthorModule,
